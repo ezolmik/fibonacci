@@ -1,0 +1,15 @@
+<!doctype html>
+<html ng-app="FibonacciApp">
+<head>
+	<title>Example - example-guide-concepts-1-production</title>
+	<script	src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+	<script src="js/fibonacci.js"></script>
+</head>
+<body ng-init="index=0">
+	<div id="x"  ng-controller="Fibonacci">
+		<b>Index:</b> <input style="width: 100px;" type="number" min="0" ng-model="index">
+		<button ng-click="load()">Compute</button> <small>{{ exception }}</small><br/>
+		<b>Fibonacci Number:</b> {{ result.value }}		
+	</div>
+</body>
+</html>
