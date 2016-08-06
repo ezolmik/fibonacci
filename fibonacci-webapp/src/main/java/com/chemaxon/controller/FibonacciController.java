@@ -24,8 +24,6 @@ import com.chemaxon.service.FibonacciService;
 @RestController
 public class FibonacciController {
 
-	private static final long UPPER_BOUND = 42;
-
 	private FibonacciService service;
 
 	public FibonacciController(FibonacciService service) {
@@ -34,7 +32,7 @@ public class FibonacciController {
 
 	@RequestMapping("/compute")
 	public @ResponseBody FibonacciNumber compute(
-			@NotNull @Min(0) @Max(UPPER_BOUND) @RequestParam(required = false, defaultValue = "0") Integer id) {
+			@NotNull @Min(0) @Max(FibonacciService.UPPER_BOUND) @RequestParam(required = false, defaultValue = "0") Integer id) {
 		FibonacciNumber number = new FibonacciNumber(id);
 		Integer value = service.findNthTerm(id);
 		number.setValue(value);
@@ -42,7 +40,7 @@ public class FibonacciController {
 	}
 
 	@ExceptionHandler(value = { ConstraintViolationException.class })
-	public  ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException e) {
+	public ResponseEntity<?> handleConstraintViolationException(ConstraintViolationException e) {
 		Set<ConstraintViolation<?>> violations = e.getConstraintViolations();
 		StringBuilder sb = new StringBuilder();
 		for (ConstraintViolation<?> violation : violations) {

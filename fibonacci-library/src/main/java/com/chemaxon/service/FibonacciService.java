@@ -2,6 +2,7 @@ package com.chemaxon.service;
 
 public interface FibonacciService {
 	
-	Integer findNthTerm(Integer n);
+	int UPPER_BOUND = 42;
 
+	Integer findNthTerm(Integer n);
 }
