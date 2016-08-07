@@ -22,7 +22,7 @@ public class FibonacciWebApplication {
 		return new MethodValidationPostProcessor();
 	}
 
-	@Autowired @Profile("!int")
+	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
 		auth.inMemoryAuthentication().withUser("barry").password("password").roles("USER");
 	}
