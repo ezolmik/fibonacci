@@ -10,11 +10,11 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 @Service
-public class FibonacciServiceImpl implements FibonacciService {
+public class FibonacciCalculatorServiceImpl implements FibonacciCalculatorService {
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 	private List<Integer> cache;
 
-	public FibonacciServiceImpl() {
+	public FibonacciCalculatorServiceImpl() {
 		cache = initializeCache();
 		logger.info("Created cache of size: " + cache.size());
 	}
@@ -22,7 +22,7 @@ public class FibonacciServiceImpl implements FibonacciService {
 	public Integer findNthTerm(Integer input) {
 		if (input <= 1) {
 			return input;
-		} else if (input > 1 && input < FibonacciService.UPPER_BOUND) {
+		} else if (input > 1 && input < FibonacciCalculatorService.UPPER_BOUND) {
 			return cache.get(input);
 		} else {
 			return findNthTerm(input-1) + findNthTerm(input-2);

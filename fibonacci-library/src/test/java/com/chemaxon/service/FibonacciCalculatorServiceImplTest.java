@@ -5,13 +5,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 
-public class FibonacciServiceImplTest {
+public class FibonacciCalculatorServiceImplTest {
 
-	private FibonacciService sut;
+	private FibonacciCalculatorService sut;
 	
 	@Before
 	public void init() {
-		sut = new FibonacciServiceImpl();
+		sut = new FibonacciCalculatorServiceImpl();
 	}
 	
 	@Test(expected=NullPointerException.class)
@@ -74,7 +74,7 @@ public class FibonacciServiceImplTest {
 	@Test // it breaks if UPPER_BOUND differs from the meaning of life (i.e. 42)
 	public void testfindNthTermIsCorrectBeforeUpperBound() {
 		// Given
-		int input = FibonacciService.UPPER_BOUND -1;
+		int input = FibonacciCalculatorService.UPPER_BOUND -1;
 		Integer expected = 165580141; 
 		// When
 		Integer actual = sut.findNthTerm(input);

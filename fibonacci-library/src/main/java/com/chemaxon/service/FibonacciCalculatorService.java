@@ -1,6 +1,6 @@
 package com.chemaxon.service;
 
-public interface FibonacciService {
+public interface FibonacciCalculatorService {
 	
 	int UPPER_BOUND = 42;
 

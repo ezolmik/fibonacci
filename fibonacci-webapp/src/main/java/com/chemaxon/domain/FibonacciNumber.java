@@ -6,6 +6,10 @@ public class FibonacciNumber {
 	private Integer value;
 	private String exception;
 
+	public FibonacciNumber() {
+		this(null);
+	}
+
 	public FibonacciNumber(Integer id) {
 		this.id = id;
 	}
@@ -28,6 +32,11 @@ public class FibonacciNumber {
 
 	public void setException(String exception) {
 		this.exception = exception;
+	}
+
+	@Override
+	public String toString() {
+		return "FibonacciNumber [id=" + id + ", value=" + value + ", exception=" + exception + "]";
 	}
 
 }

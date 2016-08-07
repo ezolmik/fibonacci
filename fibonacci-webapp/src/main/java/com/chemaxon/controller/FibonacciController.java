@@ -18,21 +18,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.chemaxon.domain.FibonacciNumber;
-import com.chemaxon.service.FibonacciService;
+import com.chemaxon.service.FibonacciCalculatorService;
 
 @Validated
 @RestController
 public class FibonacciController {
 
-	private FibonacciService service;
+	private FibonacciCalculatorService service;
 
-	public FibonacciController(FibonacciService service) {
+	public FibonacciController(FibonacciCalculatorService service) {
 		this.service = service;
 	}
 
 	@RequestMapping("/compute")
 	public @ResponseBody FibonacciNumber compute(
-			@NotNull @Min(0) @Max(FibonacciService.UPPER_BOUND) @RequestParam(required = false, defaultValue = "0") Integer id) {
+			@NotNull @Min(0) @Max(FibonacciCalculatorService.UPPER_BOUND) @RequestParam(required = false, defaultValue = "0") Integer id) {
 		FibonacciNumber number = new FibonacciNumber(id);
 		Integer value = service.findNthTerm(id);
 		number.setValue(value);
@@ -46,7 +46,7 @@ public class FibonacciController {
 		for (ConstraintViolation<?> violation : violations) {
 			sb.append(violation.getMessage() + "\n");
 		}
-		FibonacciNumber body = new FibonacciNumber(null);
+		FibonacciNumber body = new FibonacciNumber();
 		body.setException(sb.toString().trim());
 		return new ResponseEntity<>(body, HttpStatus.NOT_ACCEPTABLE);
 	}
